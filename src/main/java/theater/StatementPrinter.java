@@ -16,7 +16,6 @@ public class StatementPrinter {
         this.plays = plays;
     }
 
-
     /**
      * Returns a formatted statement of the invoice associated with this printer.
      * @return the formatted statement
