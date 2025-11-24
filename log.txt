@@ -1,2 +1,6 @@
+1f3cec0 Task 1.1
+da56866 Task 1.2
+c20ab33 Task 1.1
+e5adc8f Task 1.1
 465e85a Fixed style issues
 7cedddc Initial commit
