@@ -24,14 +24,15 @@ public class StatementPrinter {
     public String statement() {
         int totalAmount = 0;
         int volumeCredits = 0;
-        final StringBuilder result = new StringBuilder("Statement for " + invoice.getCustomer() + System.lineSeparator());
+        final StringBuilder result =
+                new StringBuilder("Statement for " + invoice.getCustomer() + System.lineSeparator());
 
         final NumberFormat frmt = NumberFormat.getCurrencyInstance(Locale.US);
 
         for (Performance p : invoice.getPerformances()) {
             final Play play = plays.get(p.getPlayID());
 
-            int thisAmount = 0;
+            int thisAmount;
             switch (play.getType()) {
                 case "tragedy":
                     thisAmount = Constants.TRAGEDY_BASE_AMOUNT;
@@ -64,10 +65,9 @@ public class StatementPrinter {
             result.append(String.format("  %s: %s (%s seats)%n", play.getName(),
                     frmt.format(thisAmount / Constants.PERCENT_FACTOR), p.getAudience()));
             totalAmount += thisAmount;
-
-            result.append(String.format("Amount owed is %s%n", frmt.format(totalAmount / Constants.PERCENT_FACTOR)));
-            result.append(String.format("You earned %s credits%n", volumeCredits));
         }
+        result.append(String.format("Amount owed is %s%n", frmt.format(totalAmount / Constants.PERCENT_FACTOR)));
+        result.append(String.format("You earned %s credits%n", volumeCredits));
         return result.toString();
     }
 }
